@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NodeLabel = System.Int32;
 
 namespace LowestCommonAncestor
@@ -8,7 +9,6 @@ namespace LowestCommonAncestor
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 
@@ -20,7 +20,10 @@ namespace LowestCommonAncestor
         // calculate the lowest common ancestor of two nodes in a tree
         public NodeLabel LowestCommonAncestor(NodeLabel x, NodeLabel y)
         {
-            return 0;
+            return RootPathOf(x)
+                .Intersect(RootPathOf(y))
+                .OrderBy(node => RootPathOf(node).Count)
+                .Last();
         }
 
         // recursive function to enumerate the depth of a node
