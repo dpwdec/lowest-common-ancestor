@@ -24,10 +24,11 @@ namespace LowestCommonAncestor
         }
 
         // recursive function to enumerate the depth of a node
-        public int DepthOf(NodeLabel label)
+        public List<int> RootPathOf(NodeLabel label)
         {
             var node = Nodes[label];
-            return node.Parent >= 0 ? 1 + DepthOf(node.Parent) : 1;
+            var path = new List<int> { label };
+            return node.Parent >= 0 ? path.Merge(RootPathOf(node.Parent)) : path;
         }
     }
 
@@ -36,5 +37,14 @@ namespace LowestCommonAncestor
         // -1 indicates a null parent relationship
         public NodeLabel Parent { get; set; }
         public List<NodeLabel> Children { get; set; }
+    }
+
+    public static class Extensions
+    {
+        public static List<T> Merge<T>(this List<T> list, List<T> other)
+        {
+            list.AddRange(other);
+            return list;
+        }
     }
 }

@@ -16,7 +16,9 @@ namespace LowestCommonAncestor.UnitTests
                 }
             };
 
-            Assert.AreEqual(1, tree.DepthOf(0));
+            var expected = new List<int> { 0 };
+
+            Assert.AreEqual(expected, tree.RootPathOf(0));
         }
 
         [Test]
@@ -31,7 +33,9 @@ namespace LowestCommonAncestor.UnitTests
                 }
             };
 
-            Assert.AreEqual(2, tree.DepthOf(1));
+            var expected = new List<int> { 1, 0 };
+
+            Assert.AreEqual(expected, tree.RootPathOf(1));
         }
 
         [Test]
@@ -49,7 +53,9 @@ namespace LowestCommonAncestor.UnitTests
                 }
             };
 
-            Assert.AreEqual(4, tree.DepthOf(4));
+            var expected = new List<int> { 4, 2, 1, 0 };
+
+            Assert.AreEqual(expected, tree.RootPathOf(4));
         }
     }
 }
