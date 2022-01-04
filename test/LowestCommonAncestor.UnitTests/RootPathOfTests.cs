@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace LowestCommonAncestor.UnitTests
 {
-    public class DepthOfTests
+    public class RootPathOfTests
     {
         [Test]
         public void TestSingleNodeTree()

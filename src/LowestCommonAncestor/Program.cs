@@ -18,11 +18,10 @@ namespace LowestCommonAncestor
         public Dictionary<NodeLabel, Node> Nodes { get; set; }
 
         // calculate the lowest common ancestor of two nodes in a tree
-        public NodeLabel LowestCommonAncestor(NodeLabel x, NodeLabel y)
+        public NodeLabel LowestCommonAncestorOf(NodeLabel x, NodeLabel y)
         {
             // calculate the intersection of the two paths from the nodes in question to the root
-            return RootPathOf(x)
-                .Intersect(RootPathOf(y))
+            return RootPathOf(x).Intersect(RootPathOf(y))
                 // order the nodes in the intersection by their depth
                 .OrderBy(node => RootPathOf(node).Count)
                 // return the deepest node in the instersection i.e. LCA
@@ -30,11 +29,19 @@ namespace LowestCommonAncestor
         }
 
         // recursive function to return the path of a node to the tree root
-        public List<int> RootPathOf(NodeLabel label)
+        public List<NodeLabel> RootPathOf(NodeLabel label)
         {
             var node = Nodes[label];
             var path = new List<int> { label };
             return node.Parent >= 0 ? path.Merge(RootPathOf(node.Parent)) : path;
+        }
+
+        // returns a sub tree that leads to the two nmodes from the LCA
+        public List<NodeLabel> SubTreeMembersOf(NodeLabel x, NodeLabel y)
+        {
+            var members = RootPathOf(x).Difference(RootPathOf(y));
+            members.Add(LowestCommonAncestorOf(x, y));
+            return members;
         }
     }
 
@@ -51,6 +58,16 @@ namespace LowestCommonAncestor
         {
             list.AddRange(other);
             return list;
+        }
+
+        public static List<T> Difference<T>(this List<T> list, List<T> other)
+        {
+            var listDiff = list.Except(other).ToList();
+            var otherDiff = other.Except(list);
+
+            listDiff.AddRange(otherDiff);
+
+            return listDiff;
         }
     }
 }

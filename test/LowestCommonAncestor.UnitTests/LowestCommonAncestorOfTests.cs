@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace LowestCommonAncestor.UnitTests
 {
-    public class LowestCommonAncestorTests
+    public class LowestCommonAncestorOfTests
     {
         [Test]
         public void TestSingleDepthTree()
@@ -18,7 +18,7 @@ namespace LowestCommonAncestor.UnitTests
                 }
             };
 
-            Assert.AreEqual(0, tree.LowestCommonAncestor(1, 2));
+            Assert.AreEqual(0, tree.LowestCommonAncestorOf(1, 2));
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace LowestCommonAncestor.UnitTests
                 }
             };
 
-            Assert.AreEqual(2, tree.LowestCommonAncestor(3, 4));
+            Assert.AreEqual(2, tree.LowestCommonAncestorOf(3, 4));
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace LowestCommonAncestor.UnitTests
                 }
             };
 
-            Assert.AreEqual(2, tree.LowestCommonAncestor(3, 6));
+            Assert.AreEqual(2, tree.LowestCommonAncestorOf(3, 6));
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace LowestCommonAncestor.UnitTests
                 }
             };
 
-            Assert.AreEqual(5, tree.LowestCommonAncestor(14, 8));
+            Assert.AreEqual(5, tree.LowestCommonAncestorOf(14, 8));
         }
     }
 }
