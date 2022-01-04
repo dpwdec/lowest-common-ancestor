@@ -39,7 +39,9 @@ namespace LowestCommonAncestor
         // returns a sub tree that leads to the two nmodes from the LCA
         public List<NodeLabel> SubTreeMembersOf(NodeLabel x, NodeLabel y)
         {
+            // take the symmetric difference between to the two roof paths i.e. opposite of intersection
             var members = RootPathOf(x).Difference(RootPathOf(y));
+            // add the LCA for the two nodes to the top
             members.Add(LowestCommonAncestorOf(x, y));
             return members;
         }
