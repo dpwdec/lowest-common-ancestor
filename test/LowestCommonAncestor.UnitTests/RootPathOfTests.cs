@@ -10,9 +10,9 @@ namespace LowestCommonAncestor.UnitTests
         {
             var tree = new Tree()
             {
-                Nodes = new Dictionary<int, Node>()
+                Nodes = new Dictionary<int, int>()
                 {
-                    {0, new Node() { Parent = -1 } }
+                    {0, -1 }
                 }
             };
 
@@ -26,10 +26,10 @@ namespace LowestCommonAncestor.UnitTests
         {
             var tree = new Tree()
             {
-                Nodes = new Dictionary<int, Node>()
+                Nodes = new Dictionary<int, int>()
                 {
-                    {0, new Node() { Parent = -1 } },
-                    {1, new Node() { Parent = 0 } }
+                    {0, -1 },
+                    {1, 0 }
                 }
             };
 
@@ -43,13 +43,13 @@ namespace LowestCommonAncestor.UnitTests
         {
             var tree = new Tree()
             {
-                Nodes = new Dictionary<int, Node>()
+                Nodes = new Dictionary<int, int>()
                 {
-                    {0, new Node() { Parent = -1 } },
-                    {1, new Node() { Parent = 0 } },
-                    {2, new Node() { Parent = 1 } },
-                    {3, new Node() { Parent = 2 } },
-                    {4, new Node() { Parent = 2 } }
+                    {0, -1 },
+                    {1, 0 },
+                    {2, 1 },
+                    {3, 2 },
+                    {4, 2 }
                 }
             };
 

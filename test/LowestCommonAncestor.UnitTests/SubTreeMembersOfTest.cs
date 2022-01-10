@@ -11,23 +11,23 @@ namespace LowestCommonAncestor.UnitTests
         {
             var tree = new Tree()
             {
-                Nodes = new Dictionary<int, Node>()
+                Nodes = new Dictionary<int, int>()
                 {
-                    { 0, new Node() { Parent = -1 } },
-                    { 1, new Node() { Parent = 0 } },
-                    { 2, new Node() { Parent = 1 } },
-                    { 3, new Node() { Parent = 2 } },
-                    { 4, new Node() { Parent = 2 } },
-                    { 5, new Node() { Parent = 4 } },
-                    { 6, new Node() { Parent = 5 } },
-                    { 7, new Node() { Parent = 5 } },
-                    { 8, new Node() { Parent = 7 } },
-                    { 9, new Node() { Parent = 8 } },
-                    { 10, new Node() { Parent = 6 } },
-                    { 11, new Node() { Parent = 10 } },
-                    { 12, new Node() { Parent = 10 } },
-                    { 13, new Node() { Parent = 11 } },
-                    { 14, new Node() { Parent = 13 } },
+                    { 0, -1 },
+                    { 1, 0 },
+                    { 2, 1 },
+                    { 3, 2 },
+                    { 4, 2 },
+                    { 5, 4 },
+                    { 6, 5 },
+                    { 7, 5 },
+                    { 8, 7 },
+                    { 9, 8 },
+                    { 10, 6 },
+                    { 11, 10 },
+                    { 12, 10 },
+                    { 13, 11 },
+                    { 14, 13 },
                 }
             };
 

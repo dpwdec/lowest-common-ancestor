@@ -15,7 +15,7 @@ namespace LowestCommonAncestor
     // label based node storage
     public class Tree
     {
-        public Dictionary<NodeLabel, Node> Nodes { get; set; }
+        public Dictionary<NodeLabel, NodeLabel> Nodes { get; set; }
 
         // calculate the lowest common ancestor of two nodes in a tree
         public NodeLabel LowestCommonAncestorOf(NodeLabel x, NodeLabel y)
@@ -31,9 +31,8 @@ namespace LowestCommonAncestor
         // recursive function to return the path of a node to the tree root
         public List<NodeLabel> RootPathOf(NodeLabel label)
         {
-            var node = Nodes[label];
             var path = new List<int> { label };
-            return node.Parent >= 0 ? path.Merge(RootPathOf(node.Parent)) : path;
+            return Nodes[label] >= 0 ? path.Merge(RootPathOf(Nodes[label])) : path;
         }
 
         // returns a sub tree that leads to the two nmodes from the LCA
@@ -45,13 +44,17 @@ namespace LowestCommonAncestor
             members.Add(LowestCommonAncestorOf(x, y));
             return members;
         }
+
+        public void Add(NodeLabel label, NodeLabel parent)
+        {
+            Nodes.Add(label, parent);
+        }
     }
 
     public class Node
     {
         // -1 indicates a null parent relationship
         public NodeLabel Parent { get; set; }
-        public List<NodeLabel> Children { get; set; }
     }
 
     public static class Extensions
