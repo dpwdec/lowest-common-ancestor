@@ -15,6 +15,8 @@ namespace LowestCommonAncestor
     // label based node storage
     public class Tree
     {
+        public const int ROOT = -1; 
+
         public Dictionary<NodeLabel, NodeLabel> Nodes { get; set; }
 
         // calculate the lowest common ancestor of two nodes in a tree
@@ -48,6 +50,11 @@ namespace LowestCommonAncestor
         public void Add(NodeLabel label, NodeLabel parent)
         {
             Nodes.Add(label, parent);
+        }
+
+        public NodeLabel ParentOf(NodeLabel label)
+        {
+            return Nodes[label];
         }
     }
 
