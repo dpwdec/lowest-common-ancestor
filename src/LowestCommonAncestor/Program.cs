@@ -56,6 +56,11 @@ namespace LowestCommonAncestor
         {
             return Nodes[label];
         }
+
+        public bool Contains(NodeLabel label)
+        {
+            return Nodes.Keys.Contains(label);
+        }
     }
 
     public class Node
