@@ -20,14 +20,13 @@ namespace LowestCommonAncestor
         public Dictionary<NodeLabel, NodeLabel> Nodes { get; set; }
 
         // calculate the lowest common ancestor of two nodes in a tree
-        public NodeLabel LowestCommonAncestorOf(NodeLabel x, NodeLabel y)
+        public NodeLabel LowestCommonAncestorOf(params NodeLabel[] nodes)
         {
-            // calculate the intersection of the two paths from the nodes in question to the root
-            return RootPathOf(x).Intersect(RootPathOf(y))
-                // order the nodes in the intersection by their depth
-                .OrderBy(node => RootPathOf(node).Count)
-                // return the deepest node in the instersection i.e. LCA
-                .Last();
+            var path = RootPathOf(nodes[0]);
+
+            return nodes
+            .Aggregate(path, (acc, node) => acc.Intersect(RootPathOf(node)).ToList())
+            .First();
         }
 
         // recursive function to return the path of a node to the tree root
